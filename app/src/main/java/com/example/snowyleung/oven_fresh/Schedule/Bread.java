@@ -12,6 +12,8 @@ public class Bread {
     String Time;
     String Price;
 
+    public int getId(){ return id; }
+
     public String getName(){
         return Name;
     }

@@ -1,14 +1,10 @@
 package com.example.snowyleung.oven_fresh.Schedule;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
-import com.example.snowyleung.oven_fresh.MakeOrder.OrderActivity;
 import com.example.snowyleung.oven_fresh.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,29 +12,35 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class ScheduleActivity extends AppCompatActivity {
 
     private String item;
+    private ArrayList<Bread> list = new ArrayList<>();
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
 
-        ListView listView = (ListView) findViewById(R.id.schedule);
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1,
-                android.R.id.text1);
-        listView.setAdapter(adapter);
-
         DatabaseReference reference_breads = FirebaseDatabase.getInstance().getReference("bread");
         reference_breads.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                adapter.clear();
+
+                recyclerView = (RecyclerView) findViewById(R.id.schedule2);
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setLayoutManager(new LinearLayoutManager(ScheduleActivity.this));
+
+                BreadAdapter adapter = new BreadAdapter(list);
+                recyclerView.setAdapter(adapter);
+
                 for (DataSnapshot ds : dataSnapshot.getChildren() ){
-                    item = "Bread: ".concat(ds.child("Name").getValue().toString()).concat("      ").concat("Brand:  ").concat(ds.child("Brand").getValue().toString()).concat("Time: ").concat(ds.child("Time").getValue().toString());
-                    adapter.add(item);
+                    Bread bread = ds.getValue(Bread.class);
+                    list.add(bread);
+                    adapter.notifyDataSetChanged();
                 }
             }
 
@@ -47,18 +49,5 @@ public class ScheduleActivity extends AppCompatActivity {
 
             }
         });
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                switch (position){
-                    case 1:
-                            startActivityForResult(new Intent(view.getContext(), OrderActivity.class), 0);
-                        break;
-                }
-            }
-        });
     }
-
 }
