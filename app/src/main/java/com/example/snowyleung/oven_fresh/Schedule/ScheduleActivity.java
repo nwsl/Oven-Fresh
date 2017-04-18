@@ -37,7 +37,7 @@ public class ScheduleActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 adapter.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren() ){
-                    item = "Bread: ".concat(ds.child("Name").getValue().toString()).concat("      ").concat("Time: ").concat(ds.child("Time").getValue().toString());
+                    item = "Bread: ".concat(ds.child("Name").getValue().toString()).concat("      ").concat("Brand:  ").concat(ds.child("Brand").getValue().toString()).concat("Time: ").concat(ds.child("Time").getValue().toString());
                     adapter.add(item);
                 }
             }

@@ -14,20 +14,23 @@
         tools:layout_editor_absoluteY="8dp"
         android:weightSum="1">
 
-        <ImageView
-            android:id="@+id/BreadView"
-            android:layout_width="wrap_content"
-            android:layout_height="327dp"
-            app:srcCompat="@drawable/pineappleBuns"
-            android:layout_weight="0.42" />
-
         <TextView
             android:id="@+id/textBread"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pineapple Bun"
             android:textSize="20dp"
-            android:textColor=""/>
+            android:textColor="@android:color/background_dark"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_weight="0.52" />
+
+        <ImageView
+            android:id="@+id/BreadView"
+            android:layout_width="wrap_content"
+            android:layout_height="327dp"
+            app:srcCompat="@drawable/pineapplebuns"
+            android:layout_weight="0.42" />
 
         <TextView
             android:id="@+id/textPrice"
@@ -36,7 +39,8 @@
             android:layout_weight="0.16"
             android:text="Price: $10"
             android:textSize="20dp"
-            android:textColor=""/>
+            android:textColor="@android:color/background_dark"
+            android:gravity="center_vertical"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,11 +48,11 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="Quantity: "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textColor=""/>
+                android:text="Quantity: "
+                android:textColor="@android:color/background_dark"
+                android:textSize="18dp" />
 
             <EditText
                 android:id="@+id/editQuantity"

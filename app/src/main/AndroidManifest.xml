@@ -55,9 +55,6 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/. 
         -->
-        <activity
-            android:name=".BakerySearch.MapsActivity"
-            android:label="@string/title_activity_maps" />
 
         <meta-data
             android:name="com.google.an             droid.gms.version"
@@ -71,6 +68,11 @@
             android:label="@string/title_activity_schedule"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MakeOrder.OrderActivity" />
+
+        <activity
+            android:name=".BakerySearch.MapsActivity"
+            android:label="@string/title_activity_schedule"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

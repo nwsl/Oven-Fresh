@@ -8,7 +8,7 @@ public class Bread {
 
     int id;
     String Name;
-    String Location;
+    String Brand;
     String Time;
     String Price;
 
@@ -20,8 +20,8 @@ public class Bread {
         return Time;
     }
 
-    public String getLocation(){
-        return Location;
+    public String getBrand(){
+        return Brand;
     }
 
     public String getPrice(){
