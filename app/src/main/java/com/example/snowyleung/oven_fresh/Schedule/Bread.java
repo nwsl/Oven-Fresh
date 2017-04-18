@@ -10,6 +10,7 @@ public class Bread {
     String Name;
     String Location;
     String Time;
+    String Price;
 
     public String getName(){
         return Name;
@@ -21,6 +22,10 @@ public class Bread {
 
     public String getLocation(){
         return Location;
+    }
+
+    public String getPrice(){
+        return Price;
     }
 
 }

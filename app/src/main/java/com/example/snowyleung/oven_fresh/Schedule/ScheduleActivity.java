@@ -1,10 +1,14 @@
 package com.example.snowyleung.oven_fresh.Schedule;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.snowyleung.oven_fresh.MakeOrder.OrderActivity;
 import com.example.snowyleung.oven_fresh.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,6 +45,18 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError){
 
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                switch (position){
+                    case 1:
+                            startActivityForResult(new Intent(view.getContext(), OrderActivity.class), 0);
+                        break;
+                }
             }
         });
     }

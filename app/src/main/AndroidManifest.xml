@@ -60,8 +60,7 @@
             android:label="@string/title_activity_maps" />
 
         <meta-data
-            android:name="com.google.an
-            droid.gms.version"
+            android:name="com.google.an             droid.gms.version"
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -70,7 +69,8 @@
         <activity
             android:name=".Schedule.ScheduleActivity"
             android:label="@string/title_activity_schedule"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MakeOrder.OrderActivity" />
     </application>
 
 </manifest>
