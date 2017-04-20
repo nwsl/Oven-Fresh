@@ -1,5 +1,4 @@
-// Fragment subclass that displays the alphabetical list of contact names
-package com.example.snowyleung.oven_fresh.Alarm;
+package com.example.snowyleung.oven_fresh.alarm;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -17,45 +16,38 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.snowyleung.oven_fresh.R;
-import com.example.snowyleung.oven_fresh.Alarm.data.DatabaseDescription.Alarm;
+import com.example.snowyleung.oven_fresh.alarm.data.DatabaseDescription.Alarm;
 
 public class AlarmFragment extends Fragment
-   implements LoaderManager.LoaderCallbacks<Cursor> {
+   implements LoaderManager.LoaderCallbacks<Cursor>{
 
-   // callback method implemented by MainActivity
    public interface AlarmFragmentListener {
-      // called when contact selected
       void onAlarmSelected(Uri alarmUri);
 
       void onAddAlarm();
    }
 
-   private static final int ALARM_LOADER = 0; // identifies Loader
+   private static final int ALARM_LOADER = 0;
 
-   // used to inform the MainActivity when a contact is selected
    private AlarmFragmentListener listener;
 
-   private AlarmAdapter alarmAdapter; // adapter for recyclerView
+   private AlarmAdapter alarmAdapter;
 
-   // configures this fragment's GUI
    @Override
    public View onCreateView(
            LayoutInflater inflater, ViewGroup container,
            Bundle savedInstanceState) {
       super.onCreateView(inflater, container, savedInstanceState);
-      setHasOptionsMenu(true); // fragment has menu items to display
+      setHasOptionsMenu(true);
 
-      // inflate GUI and get reference to the RecyclerView
       View view = inflater.inflate(
          R.layout.fragment_alarm_list, container, false);
       RecyclerView recyclerView =
          (RecyclerView) view.findViewById(R.id.recyclerView);
 
-      // recyclerView should display items in a vertical list
       recyclerView.setLayoutManager(
          new LinearLayoutManager(getActivity().getBaseContext()));
 
-      // create recyclerView's adapter and item click listener
       alarmAdapter = new AlarmAdapter(
          new AlarmAdapter.AlarmClickListener() {
             @Override
@@ -64,15 +56,12 @@ public class AlarmFragment extends Fragment
             }
          }
       );
-      recyclerView.setAdapter(alarmAdapter); // set the adapter
+      recyclerView.setAdapter(alarmAdapter);
 
-      // attach a custom ItemDecorator to draw dividers between list items
       recyclerView.addItemDecoration(new ItemDivider(getContext()));
 
-      // improves performance if RecyclerView's layout size never changes
       recyclerView.setHasFixedSize(true);
 
-      // get the FloatingActionButton and configure its listener
       FloatingActionButton addButton =
               (FloatingActionButton) view.findViewById(R.id.btnAddAlarm);
       addButton.setOnClickListener(
@@ -88,57 +77,48 @@ public class AlarmFragment extends Fragment
       return view;
    }
 
-   // set ContactsFragmentListener when fragment attached
    @Override
    public void onAttach(Context context) {
       super.onAttach(context);
       listener = (AlarmFragmentListener) context;
    }
 
-   // remove ContactsFragmentListener when Fragment detached
    @Override
    public void onDetach() {
       super.onDetach();
       listener = null;
    }
 
-   // initialize a Loader when this fragment's activity is created
    @Override
    public void onActivityCreated(Bundle savedInstanceState) {
       super.onActivityCreated(savedInstanceState);
       getLoaderManager().initLoader(ALARM_LOADER, null, this);
    }
 
-   // called from MainActivity when other Fragment's update database
    public void updateAlarmList() {
       alarmAdapter.notifyDataSetChanged();
    }
 
-   // called by LoaderManager to create a Loader
    @Override
    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-      // create an appropriate CursorLoader based on the id argument;
-      // only one Loader in this fragment, so the switch is unnecessary
       switch (id) {
          case ALARM_LOADER:
             return new CursorLoader(getActivity(),
-               Alarm.CONTENT_URI, // Uri of contacts table
-               null, // null projection returns all columns
-               null, // null selection returns all rows
-               null, // no selection arguments
+               Alarm.CONTENT_URI,
+               null,
+               null,
+               null,
                Alarm.COLUMN_NAME + " COLLATE NOCASE ASC"); // sort order
          default:
             return null;
       }
    }
 
-   // called by LoaderManager when loading completes
    @Override
    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
       alarmAdapter.swapCursor(data);
    }
 
-   // called by LoaderManager when the Loader is being reset
    @Override
    public void onLoaderReset(Loader<Cursor> loader) {
       alarmAdapter.swapCursor(null);

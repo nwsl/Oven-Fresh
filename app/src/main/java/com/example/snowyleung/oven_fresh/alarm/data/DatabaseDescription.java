@@ -1,7 +1,7 @@
 // DatabaseDescription.java
 // Describes the table name and column names for this app's database,
 // and other information required by the ContentProvider
-package com.example.snowyleung.oven_fresh.Alarm.data;
+package com.example.snowyleung.oven_fresh.alarm.data;
 
 import android.content.ContentUris;
 import android.net.Uri;
@@ -10,7 +10,7 @@ import android.provider.BaseColumns;
 public class DatabaseDescription {
    // ContentProvider's name: typically the package name
    public static final String AUTHORITY =
-      "com.example.snowyleung.data";
+      "com.example.snowyleung.oven_fresh.alarm.data";
 
    // base URI used to interact with the ContentProvider
    private static final Uri BASE_CONTENT_URI =
@@ -18,7 +18,7 @@ public class DatabaseDescription {
 
    // nested class defines contents of the contacts table4
    public static final class Alarm implements BaseColumns {
-      public static final String TABLE_NAME = "alarms"; // table's name
+      public static final String TABLE_NAME = "alarm"; // table's name
 
       // Uri for the contacts table
       public static final Uri CONTENT_URI =

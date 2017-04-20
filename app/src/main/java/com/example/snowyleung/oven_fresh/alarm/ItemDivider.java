@@ -1,7 +1,7 @@
 // ItemDivider.java
 // Class that defines dividers displayed between the RecyclerView items;
 // based on Google's sample implementation at bit.ly/DividerItemDecoration
-package com.example.snowyleung.oven_fresh.Alarm;
+package com.example.snowyleung.oven_fresh.alarm;
 
 import android.content.Context;
 import android.graphics.Canvas;

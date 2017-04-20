@@ -1,11 +1,15 @@
-package com.example.snowyleung.oven_fresh.Alarm;
+package com.example.snowyleung.oven_fresh.alarm;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.snowyleung.oven_fresh.R;
+import com.example.snowyleung.oven_fresh.alarm.data.DatabaseDescription;
 
 public class AlarmActivity extends AppCompatActivity
         implements AlarmFragment.AlarmFragmentListener,
@@ -81,5 +85,11 @@ public class AlarmActivity extends AppCompatActivity
 
             displayAddEditFragment(R.id.rightPaneContainer, alarmUri);
         }
+    }
+
+    @Override
+    public void onAlarmDelete(){
+        getSupportFragmentManager().popBackStack();
+        alarmFragment.updateAlarmList();
     }
 }

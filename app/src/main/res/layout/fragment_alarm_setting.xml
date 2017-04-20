@@ -25,15 +25,16 @@
             android:id="@+id/bread"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="What bread you would like to be alarmed?"
             android:gravity="center"
-            android:textColor="#A0A0A0"/>
+            android:text="What bread you would like to be alarmed?"
+            android:textColor="#A0A0A0" />
 
         <Button
             android:id="@+id/btnTimeFormat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Change Time Format"/>
+            android:onClick="onClick"
+            android:text="Change Time Format" />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -1,15 +1,15 @@
 // AddressBookDatabaseHelper.java
 // SQLiteOpenHelper subclass that defines the app's database
-package com.example.snowyleung.oven_fresh.Alarm.data;
+package com.example.snowyleung.oven_fresh.alarm.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.snowyleung.oven_fresh.Alarm.data.DatabaseDescription.Alarm;
+import com.example.snowyleung.oven_fresh.alarm.data.DatabaseDescription.Alarm;
 
 class AlarmDatabaseHelper extends SQLiteOpenHelper {
-   private static final String DATABASE_NAME = "AddressBook.db";
+   private static final String DATABASE_NAME = "Alarm.db";
    private static final int DATABASE_VERSION = 1;
 
    // constructor
@@ -21,11 +21,11 @@ class AlarmDatabaseHelper extends SQLiteOpenHelper {
    @Override
    public void onCreate(SQLiteDatabase db) {
       // SQL for creating the contacts table
-      final String CREATE_CONTACTS_TABLE =
+      final String CREATE_BREAD_TABLE =
          "CREATE TABLE " + Alarm.TABLE_NAME + "(" +
          Alarm._ID + " integer primary key, " +
          Alarm.COLUMN_NAME + " TEXT)";
-      db.execSQL(CREATE_CONTACTS_TABLE); // create the contacts table
+      db.execSQL(CREATE_BREAD_TABLE); // create the contacts table
    }
 
    // normally defines how to upgrade the database when the schema changes

@@ -18,7 +18,7 @@
 
    <fragment
       android:id="@+id/alarmFragment"
-      android:name="com.example.snowyleung.oven_fresh.Alarm.AlarmFragment"
+      android:name="com.example.snowyleung.oven_fresh.alarm.AlarmFragment"
       android:layout_width="0dp"
       android:layout_height="match_parent"
       android:layout_marginEnd="16dp"

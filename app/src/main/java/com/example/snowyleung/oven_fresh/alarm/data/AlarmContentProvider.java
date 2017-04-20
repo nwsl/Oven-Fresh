@@ -1,6 +1,6 @@
 // AddressBookContentProvider.java
 // ContentProvider subclass for manipulating the app's database
-package com.example.snowyleung.oven_fresh.Alarm.data;
+package com.example.snowyleung.oven_fresh.alarm.data;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 
 import com.example.snowyleung.oven_fresh.R;
-import com.example.snowyleung.oven_fresh.Alarm.data.DatabaseDescription.Alarm;
+import com.example.snowyleung.oven_fresh.alarm.data.DatabaseDescription.Alarm;
 
 public class AlarmContentProvider extends ContentProvider {
    // used to access the database
@@ -23,7 +23,7 @@ public class AlarmContentProvider extends ContentProvider {
 
    // constants used with UriMatcher to determine operation to perform
    private static final int ONE_ALARM = 1; // manipulate one contact
-   private static final int ALARMS = 2; // manipulate contacts table
+   private static final int ALARM = 2; // manipulate contacts table
 
    // static block to configure this ContentProvider's UriMatcher
    static {
@@ -33,7 +33,7 @@ public class AlarmContentProvider extends ContentProvider {
 
       // Uri for Contacts table
       uriMatcher.addURI(DatabaseDescription.AUTHORITY,
-         Alarm.TABLE_NAME, ALARMS);
+         Alarm.TABLE_NAME, ALARM);
    }
 
    // called when the AlarmContentProvider is created
@@ -64,7 +64,7 @@ public class AlarmContentProvider extends ContentProvider {
             queryBuilder.appendWhere(
                Alarm._ID + "=" + uri.getLastPathSegment());
             break;
-         case ALARMS: // all contacts will be selected
+         case ALARM: // all contacts will be selected
             break;
          default:
             throw new UnsupportedOperationException(
@@ -86,7 +86,7 @@ public class AlarmContentProvider extends ContentProvider {
       Uri newAlarmUri = null;
 
       switch (uriMatcher.match(uri)) {
-         case ALARMS:
+         case ALARM:
             // insert the new contact--success yields new contact's row id
             long rowId = dbHelper.getWritableDatabase().insert(
                Alarm.TABLE_NAME, null, values);

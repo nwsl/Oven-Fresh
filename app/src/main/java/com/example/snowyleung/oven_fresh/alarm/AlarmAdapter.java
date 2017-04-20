@@ -1,6 +1,6 @@
 // AlarmAdapter.java
 // Subclass of RecyclerView.Adapter that binds alarm to RecyclerView
-package com.example.snowyleung.oven_fresh.Alarm;
+package com.example.snowyleung.oven_fresh.alarm;
 
 import android.database.Cursor;
 import android.net.Uri;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.snowyleung.oven_fresh.Alarm.data.DatabaseDescription.Alarm;
+import com.example.snowyleung.oven_fresh.alarm.data.DatabaseDescription.Alarm;
 
 public class   AlarmAdapter
    extends RecyclerView.Adapter<AlarmAdapter.ViewHolder> {
