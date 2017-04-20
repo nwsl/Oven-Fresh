@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -37,6 +38,8 @@ import com.example.snowyleung.oven_fresh.alarm.data.DatabaseDescription.Alarm;
 
 import java.util.Calendar;
 import java.util.Date;
+
+import static android.R.color.background_dark;
 
 public class AddEditFragment extends Fragment
    implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -117,6 +120,7 @@ public class AddEditFragment extends Fragment
             @Override
             public void onClick(View view){
                 breadTextInput.setText("");
+                breadTextInput.setTextColor(Color.parseColor("black"));
             }
         });
 
