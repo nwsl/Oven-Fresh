@@ -7,14 +7,16 @@ public class MyMarker
     private String mIcon;
     private Double mLatitude;
     private Double mLongitude;
+    private String mIP;
 
-    public MyMarker(String label1, String label2, String icon, Double latitude, Double longitude)
+    public MyMarker(String label1, String label2, String icon, Double latitude, Double longitude, String IP)
     {
         this.mLabel1 = label1;
         this.mLabel2 = label2;
         this.mLatitude = latitude;
         this.mLongitude = longitude;
         this.mIcon = icon;
+        this.mIP = IP;
     }
 
     public String getmLabel1()
@@ -65,5 +67,10 @@ public class MyMarker
     public void setmLongitude(Double mLongitude)
     {
         this.mLongitude = mLongitude;
+    }
+
+    public String getmIP()
+    {
+        return mIP;
     }
 }

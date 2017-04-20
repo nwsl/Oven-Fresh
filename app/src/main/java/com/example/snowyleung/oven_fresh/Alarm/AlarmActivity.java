@@ -13,7 +13,7 @@ public class AlarmActivity extends AppCompatActivity
 
     public static final String ALARM_URI = "alarm_uri";
 
-    private AlarmFragment alarmFragment; // displays contact list
+    private AlarmFragment alarmFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
